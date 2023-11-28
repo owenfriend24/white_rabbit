@@ -3,7 +3,7 @@
 #script directory
 
 # study name and directory
-export STUDY=temple
+export STUDY=whiterabbit
 export SRCDIR=$HOME/analysis/whiterabbit
 export STUDYDIR=$STOCKYARD2/ls6/whiterabbit
 export BATCHDIR=$STOCKYARD2/ls6/whiterabbit/batch/launchscripts
