@@ -11,7 +11,7 @@ export BATCHDIR=$STOCKYARD2/ls6/whiterabbit/batch/launchscripts
 # add analysis scripts to path
 export PATH=$PATH:$SRCDIR/bin
 export STUDYDIR=$STOCKYARD2/ls6/whiterabbit
-. $STOCKYARD2/ls6/wr_env/bin/activate
+. $STOCKYARD2/ls6/tempenv/bin/activate
 
 # subjects
 export SUBJNOS=000
