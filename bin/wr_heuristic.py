@@ -36,7 +36,7 @@ def infotodict(seqinfo):
         key_fm_ap: [],
         key_fm_pa: [],
         key_phasediff: [],
-        key_imagine: [],
+        key_imagine: []
 
     }
     n_fieldmap = 0
