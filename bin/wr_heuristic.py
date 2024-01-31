@@ -72,7 +72,6 @@ def infotodict(seqinfo):
         * series_description
         * image_type
         """
-        
         if s.series_description == 'mprage':
             # T1 highres anatomical
             info[key_T1w].append(s.series_id)
@@ -88,15 +87,13 @@ def infotodict(seqinfo):
             
         elif s.series_description == "cmrr_mbep2d_se_ap":
             info[key_fm_ap].append(s.series_id)
-
-         elif s.series_description == "cmrr_mbep2d_se_pa":
+        elif s.series_description == "cmrr_mbep2d_se_pa":
              info[key_fm_pa].append(s.series_id)
 
         # functional scans
-         elif s.series_description == 'imagine' and s.series_files > 20:
-             info[key_arrow].append(s.series_id)
-             if p.series_description == 'imagine_SBRef':
-                 info[key_arrow_sbref].append(p.series_id)
-
+        elif s.series_description == 'imagine' and s.series_files > 20:
+            info[key_arrow].append(s.series_id)
+            if p.series_description == 'imagine_SBRef':
+                info[key_arrow_sbref].append(p.series_id)
         p = s
     return info
