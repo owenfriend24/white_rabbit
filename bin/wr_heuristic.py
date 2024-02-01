@@ -23,7 +23,8 @@ def infotodict(seqinfo):
 
     key_fm_ap = create_key("sub-{subject}/fmap/sub-{subject}_dir-AP_run-{item}_epi")
     key_fm_pa = create_key("sub-{subject}/fmap/sub-{subject}_dir-PA_run-{item}_epi")
-  
+
+    key_phasediff = create_key("sub-{subject}/fmap/sub-{subject}_run-{item:02d}_phasediff")
     key_imagine = create_key('sub-{subject}/func/sub-{subject}_task-imagine_run-{item:02d}_bold')
     key_imagine_sbref = create_key('sub-{subject}/func/sub-{subject}_task-imagine_run-{item:02d}_sbref')
     
