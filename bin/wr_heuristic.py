@@ -93,8 +93,8 @@ def infotodict(seqinfo):
 
         # functional scans
         elif s.series_description == 'imagine' and s.series_files > 20:
-            info[key_arrow].append(s.series_id)
+            info[key_imagine].append(s.series_id)
             if p.series_description == 'imagine_SBRef':
-                info[key_arrow_sbref].append(p.series_id)
+                info[key_imagine_sbref].append(p.series_id)
         p = s
     return info
