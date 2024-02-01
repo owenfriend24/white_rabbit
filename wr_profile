@@ -9,16 +9,15 @@ export STUDY=wr
 export SRCDIR=$HOME/analysis/wr
 export STUDYDIR=$STOCKYARD2/ls6/wr
 export BATCHDIR=$STOCKYARD2/ls6/wr/batch/launchscripts
-export FSDIR=$SCRATCH/temple/skyra_prepro/derivatives/fmriprep/sourcedata/freesurfer #come back to fix these
-export FMDIR=$SCRATCH/temple/skyra_prepro/derivatives/fmriprep
-export CORR=/corral-repl/utexas/prestonlab/temple
+export FSDIR=$SCRATCH/wr/prepro/derivatives/fmriprep/sourcedata/freesurfer
+export FMDIR=$SCRATCH/wr/prepro/derivatives/fmriprep/
+export CORR=/corral-repl/utexas/prestonlab/prisma_testing
 # add analysis scripts to path
 export PATH=$PATH:$SRCDIR/bin
 export STUDYDIR=$STOCKYARD2/ls6/wr
 . $STOCKYARD2/ls6/tempenv/bin/activate
 export PATH=$PATH:$SRCDIR/bin
 # subjects
-export SUBJNOS=020:022:025:029:030:034:035:036:037:038:041:042:050:051
-export SUBIDS=temple_020:temple022:temple025:temple029:temple030:temple034:temple035:temple036:temple037:temple038:temple041:temple042:temple050:temple051
-export BIDIDS=temple016:temple019:temple020:temple022:temple024:temple025:temple029:temple030:temple032:temple033:temple034:temple035:temple036:temple037:temple038:temple041:temple042:temple045:temple050:temple051:temple053:temple056:temple057:temple058
-export BIDIDSTEMP=temple016:temple019:temple020:temple022:temple024:temple025:temple029:temple030:temple032:temple033:temple034:temple035:temple036:temple037:temple038:temple041:temple042:temple045:temple050:temple051:temple056:temple057:temple058
+export SUBJNOS=200:201
+export SUBIDS=wr_200:wr_201
+export BIDIDS=wr200:wr201
