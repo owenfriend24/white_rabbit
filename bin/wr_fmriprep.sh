@@ -13,7 +13,7 @@ subject=$2
 echo " Starting at $(date)"
 start=$(date +%s)
 
-DERIVS_DIR=derivatives/fmriprep-23.0.2
+DERIVS_DIR=derivatives/fmriprep
 
 # Prepare some writeable bind-mount points.
 TEMPLATEFLOW_HOST_HOME=${WORK}/.cache/templateflow
