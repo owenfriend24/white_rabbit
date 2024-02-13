@@ -115,6 +115,7 @@ def main(data_dir):
     # add IntendedFor field to fieldmaps
     for subject in layout.get_subjects():
         fmappings = get_fieldmap_mapping(data_dir, subject)
+        id = 0
         for fmap_run, func_runs in fmappings.items():
             func_files = [
                 f'func/sub-{subject}_{func_run}_bold.nii.gz'
@@ -131,9 +132,11 @@ def main(data_dir):
             for fmap_file in fmap_files:
                 prop = fmap_file.get_dict()
                 prop['IntendedFor'] = func_files + sbref_files
+                prop['B0FieldIdentifier'] = f'00000{i}'
                 os.chmod(fmap_file.path, prw)
                 with open(fmap_file.path, 'w') as f:
                     json.dump(prop, f, indent=4)
+            i += 1
 
     # sort the participants file
     participants_file = os.path.join(data_dir, 'participants.tsv')
