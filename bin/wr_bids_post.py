@@ -132,11 +132,11 @@ def main(data_dir):
             for fmap_file in fmap_files:
                 prop = fmap_file.get_dict()
                 prop['IntendedFor'] = func_files + sbref_files
-                prop['B0FieldIdentifier'] = f'00000{i}'
+                prop['B0FieldIdentifier'] = f'00000{id}'
                 os.chmod(fmap_file.path, prw)
                 with open(fmap_file.path, 'w') as f:
                     json.dump(prop, f, indent=4)
-            i += 1
+            id += 1
 
     # sort the participants file
     participants_file = os.path.join(data_dir, 'participants.tsv')
