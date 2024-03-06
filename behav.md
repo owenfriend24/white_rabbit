@@ -5,7 +5,7 @@
    cd Documents/wr_local/analysis
    python clean_raw_behav.py SUB
    ```
-   e.g.,
+   no 'wr' for sub, e.g.,
    ```
    python clean_raw_behav.py 200
    ```
