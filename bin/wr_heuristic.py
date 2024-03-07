@@ -19,7 +19,7 @@ def infotodict(seqinfo):
     """
     # anatomicals
     key_T1w = create_key("sub-{subject}/anat/sub-{subject}_T1w")
-    key_T2w = create_key("sub-{subject}/anat/sub-{subject}_T2w")
+    key_T2w = create_key("sub-{subject}/anat/sub-{subject}_T2w_run={item}")
 
     key_fm_ap = create_key("sub-{subject}/fmap/sub-{subject}_dir-AP_run-{item}_epi")
     key_fm_pa = create_key("sub-{subject}/fmap/sub-{subject}_dir-PA_run-{item}_epi")
