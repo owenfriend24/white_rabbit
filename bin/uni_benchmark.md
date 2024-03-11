@@ -26,3 +26,10 @@ close vs far in time responses
   * Contrast 3: very far over very close
     * ev1: 1, ev4: -1
   * Contrast 4: far over close
+
+
+```
+first_level_fsfs.sh $HOME/analysis/wr/bin/templates/source_template.fsf /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr200/univ wr200 /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/
+first_level_fsfs.sh $HOME/analysis/wr/bin/templates/tempdist_template.fsf /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr200/univ wr200 /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/
+first_level_fsfs.sh $HOME/analysis/wr/bin/templates/boundary_template.fsf /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr200/univ wr200 /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/
+```
