@@ -21,6 +21,9 @@ source /home1/09123/ofriend/analysis/wr/wr_profile
 cd /home1/09123/ofriend/analysis/wr/bin
 
 mkdir /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ
+mkdir /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/boundary
+mkdir /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/source
+mkdir /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/tempdist
 
 nifti_file1=$fm_dir/sub-"$subject"/func/skullstripped_T1/sub-"$subject"_task-imagine_run-01_space-T1w_desc-preproc_bold_ss_4mm.nii.gz
 num_vols1=$(fslinfo "$nifti_file1" | awk '$1 == "dim4" {print $2}')
