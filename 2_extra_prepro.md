@@ -17,7 +17,7 @@ fsleyes &
 ## Plotting motion using fmriprep confound files
 * fmriprep outputs some plot but I don't like their formatting, this script gives better ones including reports of mean, sd, and %/# over threshold for FD and DVARS
 * .png graphs are outputted to derivatives/motion/sub-{subject}/; use virtual desktop or download via CyberDuck to view 
-  ```
+```
  wr_plot_motion.py <fmriprep directory> <subject>
  ```
 example:
