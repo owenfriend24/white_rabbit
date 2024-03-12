@@ -76,6 +76,7 @@ sub=wr200
 slaunch -J prep_func "prep_func_data.sh $SCRATCH/wr/new_prepro/derivatives/fmriprep/sourcedata/freesurfer $SCRATCH/wr/new_prepro/derivatives/fmriprep {} imagine 4" $sub -N 1 -n 1 -r 01:00:00 -p normal
 ```
 ## 6. Skullstrip anatomical image and create transform images/affine files for registration between T1 functional, T1 anatomical, and MNI space
+* takes about 15 minutes on development node
 * run transformations with skullstripped data
 * This script will also create a skullstripped T1 anatomical in both native T1 and MNI space
 * should add this to the end of prep_func_data.sh later on so both run as part of same process
