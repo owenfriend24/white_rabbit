@@ -52,7 +52,18 @@ example:
 wr_univ.py $SCRATCH/wr/new_prepro/derivatives/fmriprep/ all wr200
 ```
 2. Create template .fsf files using Feat gui (add details here later)
-3. Generate fsf files for each analysis type
+* remote desktop
+```
+sbatch /share/doc/slurm/job.dcv
+touch dcvserver.out ; tail -f dcvserver.out
+```
+* open feat gui
+```
+Feat &
+```
+* create .fsf file and save, download and open as text file to make final edits; see templates in ___ for reference
+  
+4. Generate fsf files for each analysis type
 * generates .fsf files for each analysis by editing templates in wr/bin/templates for each subject
 * creates univ directory within participant's derivatives folder, with boundary, source, and tempdist subdirectories
  * .fsf files for each analyses stored within respective subdirectory
