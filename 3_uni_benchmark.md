@@ -19,14 +19,11 @@
    
 ### 3. close vs far in time responses
 * 1st level
-  * ev1: very far; ev2: far, ev3: close, ev4: very close, ev5: other (no items)
-  * Contrast 1: very close over very far, 4 vs. 1
-    * ev1: -1, ev4: 1
-  * Contrast 2: close over far
-    * ev1: -1, ev2: -1, ev3: 1, ev4: 1, others: 0
-  * Contrast 3: very far over very close
-    * ev1: 1, ev4: -1
-  * Contrast 4: far over close
+  * ev1: any_far; ev2: any_far, ev3: other
+  * Contrast 1:  close over far
+    * ev1: -1, ev2: 1
+  * Contrast 2: far over close
+    * ev1: 1, ev2: -1
 
 ### 4. repetition suppression in same vs. different contexts
 * 1st level
