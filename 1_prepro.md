@@ -1,8 +1,10 @@
 # White Rabbit Pre-Processing of fMRI Data
 ## 1. Source white rabbit profile
 * sets paths to bin, activates 'tempenv' virutal environment (same as temple)
+* can also enter 'wr' as shortcut; will turn terminal purple to show WR is the active profile
 ```
 source $HOME/analysis/wr/wr_profile
+wr
 ```
 * Code is currently in my home/analysis/wr/bin directory and sourcing the profile in home/analysis/wr adds those scripts to Path. Can help set up on other machines
 ## 2. Convert source DICOM data to BIDS formatting
@@ -11,7 +13,8 @@ source $HOME/analysis/wr/wr_profile
   * need to remember how to refer to subject based on what level of preprocessing you're at, but otherwise, this is a helpful reminder for where the data is at 
 * copy source data from corral to lonestar6
 ```
-scp -R /corral/utexas/prestonlab/whiterabbit_temp/wr_200 $WORK/wr/sourcedata
+cp -R $CORR/wr_200 $WORK/wr/sourcedata
+
 ```
 * Run heudiconv on source data
 
@@ -23,7 +26,7 @@ slaunch -J heudiconv "wr_heudiconv.sh {} <raw data directory> <heuricstic file> 
 example:
 ```
 sub=wr_001
-slaunch -J heudiconv "wr_heudiconv.sh {} $WORK/wr/sourcedata/ $HOME/analysis/wr/bin/wr_heuristic.py $SCRATCH/wr/prepro/" $sub -N 1 -n 1 -r 00:30:00 -p development
+slaunch -J heudiconv "wr_heudiconv.sh {} $WORK/wr/sourcedata/ $HOME/analysis/wr/bin/wr_heuristic.py $SCRATCH/wr/new_prepro/" $sub -N 1 -n 1 -r 00:30:00 -p development
 ```
 ## 3. Add fieldmap information to functional run .json files
 * Need to make sure before that no extraneous/unused fieldmaps remain (e.g., if you had to abort one fieldmap during scanning, that should be removed before running heudiconv).
