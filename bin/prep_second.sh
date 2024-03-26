@@ -26,9 +26,9 @@ mkdir /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/u
 mkdir /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/source/$run/reg
 mkdir /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/tempdist/$run/reg
 
-cp "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/boundary/$run/reg/mean_func.nii.gz" "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/boundary/$run/reg/standard.nii.gz"
-cp "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/source/$run/reg/mean_func.nii.gz"  "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/source/$run/reg/standard.nii.gz"
-cp "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/tempdist/$run/reg/mean_func.nii.gz"  "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/tempdist/$run/reg/standard.nii.gz"
+cp "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/boundary/$run/mean_func.nii.gz" "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/boundary/$run/reg/standard.nii.gz"
+cp "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/source/$run/mean_func.nii.gz"  "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/source/$run/reg/standard.nii.gz"
+cp "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/tempdist/$run/mean_func.nii.gz"  "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/tempdist/$run/reg/standard.nii.gz"
 
 cp "/home1/09123/ofriend/analysis/temple/univ/identity.mat" "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/boundary/$run/reg/example_func2standard.mat"
 cp "/home1/09123/ofriend/analysis/temple/univ/identity.mat" "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/source/$run/reg/example_func2standard.mat"
@@ -36,4 +36,4 @@ cp "/home1/09123/ofriend/analysis/temple/univ/identity.mat" "/scratch/09123/ofri
 done
 
 # Run your Python script
-python edit_first_uni.py $template $out_path $subject 5 222
+python first_level_fsfs.py $template $out_path $subject 5 222
