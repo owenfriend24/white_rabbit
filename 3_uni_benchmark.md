@@ -99,3 +99,7 @@ Hey, figured out how to keep them in T1. To keep them in T1, instead of moving a
 prep_second.sh $HOME/analysis/wr/bin/templates/2ndlevel_source_3run_template.fsf $FM/sub-wr202/univ wr202 $FM
 ```
 * note - will need a new tmeplate for a 4 run source, and will need to go into each fsf and edit so it aligns properly to the runs where we have both correct and incorrect source memory responses
+
+run_bench_seconds.sh subject fmriprep_dir
+* testing now
+* can update later to re-mask feat output and get rid of voxels outside the brain
