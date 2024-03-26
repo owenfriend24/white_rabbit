@@ -28,9 +28,13 @@ def edit_fsf_file(template, out_path, sub, run, num_vols):
         fsf_content = fsf_content.replace('NUM_VOLS', num_vols)
     
         fsf_content = fsf_content.replace('OUT_RUN', f'out_run{run}')
-        
-        out_file = f'{out_path}/sub-{sub}-uni_first_run-0{run}.fsf'
-        
+        if  'boundary' in template:  
+            out_file = f'{out_path}/boundary/sub-{sub}-boundary_run-0{run}.fsf'
+        elif 'source' in template:
+            out_file = f'{out_path}/source/sub-{sub}-source_run-0{run}.fsf'
+        elif 'tempdist' in template:
+            out_file = f'{out_path}/tempdist/sub-{sub}-tempdist_run-0{run}.fsf'
+    os.makedirs(os.path.dirname(out_file), exist_ok=True)   
     # Write the modified content to the new .fsf file
     with open(out_file, 'w') as f:
         f.write(fsf_content)
