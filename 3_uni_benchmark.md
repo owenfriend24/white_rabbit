@@ -100,6 +100,21 @@ prep_second.sh $HOME/analysis/wr/bin/templates/2ndlevel_source_3run_template.fsf
 ```
 * note - will need a new tmeplate for a 4 run source, and will need to go into each fsf and edit so it aligns properly to the runs where we have both correct and incorrect source memory responses
 
+
 run_bench_seconds.sh subject fmriprep_dir
-* testing now
 * can update later to re-mask feat output and get rid of voxels outside the brain
+
+
+## transforming MNI masks to participant's T1w space (in progress, will be used for repetition suppression analysis)
+```
+antsApplyTransforms -d 3 -i $WORK/wr/mni_rois/b_hip.nii.gz -r $FM/sub-wr202/anat/sub-wr202_T1w_ss.nii.gz -o $FM/sub-wr202/transforms/sub-wr202_MNI_to_T1w_mask.nii.gz -t $FM/sub-wr202/transforms/native_to_MNI_Inverse_Warp.nii.gz
+```
+if that works... mask the parameter estimates with hippocampal masks (anterior and posterior)
+```
+fslmaths $FM/sub-wr202/univ/level2/boundary/out_run1.feat/stats/pe1.nii.gz -mas $FM/sub-wr202/transforms/sub-wr202_MNI_to_T1w_mask.nii.gz $FM/sub-wr202/univ/repsup/sub-wr202_run1_pe1.nii.gz
+```
+* check on the pe #'s i want... will need to plot by run since the individual items are not parameters going into second level models (can also average pe's once computed)
+
+```
+fslstats $FM/sub-wr202/univ/repsup/sub-wr202_run1_pe1.nii.gz -M
+```
