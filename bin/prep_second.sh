@@ -33,7 +33,7 @@ cp "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/uni
 cp "/home1/09123/ofriend/analysis/temple/univ/identity.mat" "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/boundary/$run/reg/example_func2standard.mat"
 cp "/home1/09123/ofriend/analysis/temple/univ/identity.mat" "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/source/$run/reg/example_func2standard.mat"
 cp "/home1/09123/ofriend/analysis/temple/univ/identity.mat" "/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-${subject}/univ/tempdist/$run/reg/example_func2standard.mat"
-
+done
 
 # Run your Python script
 python edit_first_uni.py $template $out_path $subject 5 222
