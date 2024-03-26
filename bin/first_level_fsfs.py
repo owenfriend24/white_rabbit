@@ -19,7 +19,12 @@ def edit_fsf_file(template, out_path, sub, run, num_vols):
     
     
     if num_vols == '222':
-        out_file = f'{out_path}/sub-{sub}-uni_second_level.fsf'
+        if 'boundary' in template:
+            out_file = f'{out_path}/boundary/sub-{sub}-boundary_second_level.fsf'
+        elif 'tempdist' in template:
+            out_file = f'{out_path}/tempdist/sub-{sub}-tempdist_second_level.fsf'
+        elif 'source' in template:
+            out_file = f'{out_path}/source/sub-{sub}-source_second_level.fsf'
     else:
         # Replace 'run-01' with whatever run we're modeling
         fsf_content = fsf_content.replace('run-01', f'run-0{run}')
