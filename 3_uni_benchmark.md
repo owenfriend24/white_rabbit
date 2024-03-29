@@ -119,3 +119,6 @@ fslmaths $FM/sub-wr202/univ/level2/boundary/out_run1.feat/stats/pe1.nii.gz -mas 
 ```
 fslstats $FM/sub-wr202/univ/repsup/sub-wr202_run1_pe1.nii.gz -M
 ```
+
+
+* created the b_hip and the affines for wr202; next step should be to make the rest of the masks, register them all into pe space, then mask
