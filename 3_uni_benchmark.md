@@ -106,6 +106,7 @@ run_bench_seconds.sh subject fmriprep_dir
 
 
 ## transforming MNI masks to participant's T1w space (in progress, will be used for repetition suppression analysis) - need to figure out how to inverse the affine file
+create affine to transform MNI mask to T1w space
 ```
 antsApplyTransforms -d 3 -i $WORK/wr/mni_rois/b_hip.nii.gz -r $FM/sub-wr202/anat/sub-wr202_T1w_ss.nii.gz -o $FM/sub-wr202/transforms/sub-wr202_MNI_to_T1w_mask.nii.gz -t $FM/sub-wr202/transforms/native_to_MNI_Inverse_Warp.nii.gz
 ```
