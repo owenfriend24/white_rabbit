@@ -1,0 +1,19 @@
+# works but looks a little less good
+```
+ antsApplyTransforms -d 3 -i $WORK/wr/mni_rois/b_hip.nii.gz -o ./mni_rois/b_hip.nii.gz -r /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr201/anat/sub-wr201_T1w_ss.nii.gz -t [/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr201/transforms/native_to_MNI_InverseWarp.nii.gz] -t [/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr201/transforms/native_to_MNI_Affine.txt, 1]
+ ```
+
+ # works and looks better but doesn't have right functional dimensions
+ ```
+ antsApplyTransforms -d 3 -i $WORK/wr/mni_rois/b_hip.nii.gz -o ./mni_rois/b_hip_func.nii.gz -r /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr201/anat/sub-wr201_T1w_ss.nii.gz -t [/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr201/transforms/native_to_MNI_InverseWarp.nii.gz] -t [/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr201/transforms/native_to_MNI_Affine.txt, 1] -t [/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr201/transforms/mask_to_func_ref_Affine.txt]
+ ```
+
+# masks should be NN
+```
+antsApplyTransforms -d 3 -n NearestNeighbor -i $WORK/wr/mni_rois/b_hip.nii.gz -o ./mni_rois/b_hip_nn.nii.gz -r /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr201/anat/sub-wr201_T1w_ss.nii.gz -t [/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr201/transforms/native_to_MNI_InverseWarp.nii.gz] -t [/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr201/transforms/native_to_MNI_Affine.txt, 1]
+ ```
+
+# not outputting? maybe memory issue? launch as job?
+```
+  antsApplyTransforms -d 3 -n NearestNeighbor -i $WORK/wr/mni_rois/b_hip.nii.gz -o ./mni_rois/b_hip_nn.nii.gz -r /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr201/anat/sub-wr201_T1w_ss.nii.gz -t [/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr201/transforms/native_to_MNI_InverseWarp.nii.gz] -t [/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr201/transforms/native_to_MNI_Affine.txt, 1] -t [/scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr201/transforms/mask_to_func_ref_Affine.txt]
+ ```
