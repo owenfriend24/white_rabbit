@@ -38,3 +38,6 @@ antsApplyTransforms -d 3 -i $WORK/wr/mni_rois/b_hip.nii.gz -o $FM/sub-wr206/tran
 
 # this one looks pretty good; will need to run for all subjects to confirm.
 antsApplyTransforms -d 3 -i $WORK/wr/mni_rois/b_hip.nii.gz -o $FM/sub-wr206/transforms/direct_MNI_full_mask.nii.gz -t $FM/sub-wr206/transforms/direct_mni_func_full_MNIAffine.txt -r $FM/sub-wr206/func/sub-wr206_task-imagine_run-01_boldref.nii.gz
+
+
+set up for group in mni_masks_to_func.sh, re created rep_sup.py (will need to rerun for all subs)
