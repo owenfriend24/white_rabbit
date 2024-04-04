@@ -27,16 +27,11 @@
 
 ### 4. repetition suppression in same vs. different contexts
 * 1st level
- * same ev's #2, will want to extract parameter estimates from each ev in hippocampus and plot
+ * same ev's #2, extract parameter estimates from each ev in hippocampus (and subregion ROI's and plot to compare same vs. different contexts
 
-```
-wr_univ.py /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/ all wr200
-first_level_fsfs.sh $HOME/analysis/wr/bin/templates/source_template.fsf /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr200/univ wr200 /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/
-first_level_fsfs.sh $HOME/analysis/wr/bin/templates/tempdist_template.fsf /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr200/univ wr200 /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/
-first_level_fsfs.sh $HOME/analysis/wr/bin/templates/boundary_template.fsf /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr200/univ wr200 /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/
-```
-## Running first level analyses
-### 1. Generate formatted .txt files for feat
+# Executing analyses:
+## 1st level analyses.
+### 2. Reformat behavioral data to .txt files with format \[onset duration weight] and no headers
  * .txt files will be outputted into func/univ_txt_files (to keep in consistent directory with events files)
  * confounds - reformats fmriprep output to remove NaN's, movement in each direction and derivatives
  * behavioral data - onset, duration, weight; one .txt file for each Explanatory Variable (varies by analysis)
@@ -48,38 +43,19 @@ example:
 ```
 wr_univ.py $SCRATCH/wr/new_prepro/derivatives/fmriprep/ all wr200
 ```
-### 2. Create template .fsf files using Feat gui (add details here later)
-* remote desktop
-```
-sbatch /share/doc/slurm/job.dcv
-touch dcvserver.out ; tail -f dcvserver.out
-```
-* open feat gui
-```
-Feat &
-```
-* create .fsf file and save, download and open as text file to make final edits; see templates in ___ for reference
-  
-### 3. Generate fsf files for each analysis type
-* generates .fsf files for each analysis by editing templates in wr/bin/templates for each subject
-* creates univ directory within participant's derivatives folder, with boundary, source, and tempdist subdirectories
- * .fsf files for each analyses stored within respective subdirectory
-* boundary:
-```
-first_level_fsfs.sh $HOME/analysis/wr/bin/templates/boundary_template.fsf /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr200/univ wr200 /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/
-```
-* source:
+### 3. Create template files using Feat gui via remote desktop
+* see above for design parameters
+### 4. Create .fsf files based on templates to run first level analyses for all subjects and runs
+* will create subdirectories within sub/univ for each analysis
 ```
 first_level_fsfs.sh $HOME/analysis/wr/bin/templates/source_template.fsf /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr200/univ wr200 /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/
-```
-* tempdist
-```
 first_level_fsfs.sh $HOME/analysis/wr/bin/templates/tempdist_template.fsf /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr200/univ wr200 /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/
+first_level_fsfs.sh $HOME/analysis/wr/bin/templates/boundary_template.fsf /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/sub-wr200/univ wr200 /scratch/09123/ofriend/wr/new_prepro/derivatives/fmriprep/
 ```
-
 ### 4. Batch run all first level analyses
 * will run a first level univariate analyses for each analysis type, for each run, for each subject
 * outputted to subject/univ/analysis_type directory within derivatives
+* analyses will fail if there is not behavior to model (i.e., if participant got 0 incorrect responses on source memory for 1 run). This isn't an issue with running the rest of the first level analyses, but will need to be accounted for in the 2nd level
 ```
 run_bench_l1.sh $SCRATCH/wr/new_prepro/derivatives/fmriprep wr200
 ```
@@ -88,52 +64,29 @@ example:
 subs=201:202:203
 slaunch -J batch_uni "run_bench_l1.sh $SCRATCH/wr/new_prepro/derivatives/fmriprep {}" $subs -N 1 -n 3 -r 08:00:00 -p normal
 ```
-
-
-from Omer - 
-Hey, figured out how to keep them in T1. To keep them in T1, instead of moving an MNI or the subject's T1w image into the lower level feat reg folder (before running the higher level analysis), you'll need to move the mean_func.nii.gz image found in the feat folder into the reg directory (and move the identity matrix into the reg folder also like you have before). The lab previously used each subject's T1w image to do so, but that was resulting in some weird transformations into a completely different space.
-* rename to standard.nii.gz, you don't need a highres in the reg folder
-* rename identity matrix to example_func2standard.mat
-
+## 2nd level analyses
+### 1. Create fsf files for each second level analysis based on 2nd level templates, also copy mean_func.nii.gz from feat output into reg folder with identity matrix to ensure no transformation out of T1w participant space
+* for source memory, there is a three run and 4 run source memory template (in case ppt's get all source questions correct in a given run). 3 run template automatically omits the fourth run, but can be easily adjusted on a subject by subject basis
 ```
+prep_second.sh $HOME/analysis/wr/bin/templates/2ndlevel_boundary_template.fsf $FM/sub-wr202/univ wr202 $FM
+prep_second.sh $HOME/analysis/wr/bin/templates/2ndlevel_tempdist_template.fsf $FM/sub-wr202/univ wr202 $FM
+prep_second.sh $HOME/analysis/wr/bin/templates/2ndlevel_source_4run_template.fsf $FM/sub-wr202/univ wr202 $FM
 prep_second.sh $HOME/analysis/wr/bin/templates/2ndlevel_source_3run_template.fsf $FM/sub-wr202/univ wr202 $FM
 ```
-* note - will need a new tmeplate for a 4 run source, and will need to go into each fsf and edit so it aligns properly to the runs where we have both correct and incorrect source memory responses
-
-
+### 2. Run all second level analyses
+```
 run_bench_seconds.sh subject fmriprep_dir
-* can update later to re-mask feat output and get rid of voxels outside the brain
-
-
-## transforming MNI masks to participant's T1w space (in progress, will be used for repetition suppression analysis) - need to figure out how to inverse the affine file
-create affine to transform MNI mask to T1w space
-```
-antsApplyTransforms -d 3 -i $WORK/wr/mni_rois/b_hip.nii.gz -r $FM/sub-wr202/anat/sub-wr202_T1w_ss.nii.gz -o $FM/sub-wr202/transforms/sub-wr202_MNI_to_T1w_mask.nii.gz -t $FM/sub-wr202/transforms/native_to_MNI_Inverse_Warp.nii.gz
-```
-if that works... mask the parameter estimates with hippocampal masks (anterior and posterior)
-```
-fslmaths $FM/sub-wr202/univ/level2/boundary/out_run1.feat/stats/pe1.nii.gz -mas $FM/sub-wr202/transforms/sub-wr202_MNI_to_T1w_mask.nii.gz $FM/sub-wr202/univ/repsup/sub-wr202_run1_pe1.nii.gz
-```
-* check on the pe #'s i want... will need to plot by run since the individual items are not parameters going into second level models (can also average pe's once computed)
-
-```
-fslstats $FM/sub-wr202/univ/repsup/sub-wr202_run1_pe1.nii.gz -M
 ```
 
-
-* created the b_hip and the affines for wr202; next step should be to make the rest of the masks, register them all into pe space, then mask
-
-
-
-
-### repetition suppression - transforming freesurfer HPC masks for comparison
+## Repetition Suppression Analysis
+### 1. create bilateral hippocampus mask in functional space from freesurfer output
 ```
-for sub in wr201 wr202 wr204 wr206; do
-mri_binarize --i $FS/sub-wr$sub/mri/aparc+aseg.mgz --o $FS/sub-wr$sub/mri/out/left_hip_mask_tmp.nii.gz --match 17
-mri_binarize --i $FS/sub-$sub/mri/aparc+aseg.mgz --o $FS/sub-w$sub/mri/out/right_hip_mask_tmp.nii.gz --match 53
-fslmaths $FS/sub-$sub/mri/out/left_hip_mask_tmp.nii.gz -add $FS/sub-$sub/mri/out/right_hip_mask_tmp.nii.gz $FS/sub-$sub/mri/out/b_hip.nii.gz
-antsApplyTransforms -d 3 -i $FS/sub-$sub/mri/out/b_hip.nii.gz -n NearestNeighbor -o $FM/sub-$sub/transforms/b_hip_fs.nii.gz -t [$FM/sub-$sub/transforms/mask_to_func_ref_Affine.txt] -r $FM/sub-$sub/univ/boundary/out_run1.feat/stats/pe1.nii.gz
-done
+fs_hpc.sh wr204
 ```
 
-rep_sup.py $FM $sub
+### 2. transform MNI hippocampus and subfield masks into participant T1w functional space, extract parameter estimates for each EV in each run within each mask
+```
+rep_sup.py $FM wr204
+```
+### 3. download all_pe.csv files for each ppt and plot
+
