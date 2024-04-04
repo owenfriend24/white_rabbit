@@ -1,4 +1,4 @@
-# White Rabbit Pre-Processing of fMRI Data
+# Pre-Processing of fMRI Data
 ## 1. Source white rabbit profile
 * sets paths to bin, activates 'tempenv' virutal environment (same as temple)
 * can also enter 'wr' as shortcut; will turn terminal purple to show WR is the active profile
@@ -20,6 +20,7 @@ cp -R $CORR/wr_200 $WORK/wr/sourcedata
 
   * Make sure the WR scripts are on your Path, set participant variable, then use slaunch to convert. Below code is for one subject at a time and will run on a development node.
 Aborted scans should not be passed in, if you have any aborted partial scans delete them or save them elsewhere before running heudiconv
+  * wr_backup_heu.sh assigns correct directory structure for scans from the BIC's archive if direct export has issues
 ```
 slaunch -J heudiconv "wr_heudiconv.sh {} <raw data directory> <heuricstic file> <output directory>" <subject> -N 1 -n 1 -r 00:30:00 -p development
 ```
