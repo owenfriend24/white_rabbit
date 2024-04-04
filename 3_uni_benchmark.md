@@ -122,3 +122,18 @@ fslstats $FM/sub-wr202/univ/repsup/sub-wr202_run1_pe1.nii.gz -M
 
 
 * created the b_hip and the affines for wr202; next step should be to make the rest of the masks, register them all into pe space, then mask
+
+
+
+
+### repetition suppression - transforming freesurfer HPC masks for comparison
+```
+for sub in wr201 wr202 wr204 wr206; do
+mri_binarize --i $FS/sub-wr$sub/mri/aparc+aseg.mgz --o $FS/sub-wr$sub/mri/out/left_hip_mask_tmp.nii.gz --match 17
+mri_binarize --i $FS/sub-$sub/mri/aparc+aseg.mgz --o $FS/sub-w$sub/mri/out/right_hip_mask_tmp.nii.gz --match 53
+fslmaths $FS/sub-$sub/mri/out/left_hip_mask_tmp.nii.gz -add $FS/sub-$sub/mri/out/right_hip_mask_tmp.nii.gz $FS/sub-$sub/mri/out/b_hip.nii.gz
+antsApplyTransforms -d 3 -i $FS/sub-$sub/mri/out/b_hip.nii.gz -n NearestNeighbor -o $FM/sub-$sub/transforms/b_hip_fs.nii.gz -t [$FM/sub-$sub/transforms/mask_to_func_ref_Affine.txt] -r $FM/sub-$sub/univ/boundary/out_run1.feat/stats/pe1.nii.gz
+done
+```
+
+rep_sup.py $FM $sub
