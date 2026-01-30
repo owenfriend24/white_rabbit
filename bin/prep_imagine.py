@@ -1,0 +1,62 @@
+#!/usr/bin/env python
+#
+# generate .txt files without headers for motion confounds or for arrow behavioral data
+
+from pathlib import Path
+import pandas as pd
+import os
+import argparse
+
+
+def main(data_dir, file_type, sub):
+    os.makedirs(f'/corral-repl/utexas/prestonlab/whiterabbit_temp/sub-{sub}/', exist_ok=True)
+    out_dir = f'/corral-repl/utexas/prestonlab/whiterabbit_temp/sub-{sub}/func/imagine_txt'
+    os.makedirs(out_dir, exist_ok=True)
+    func_dir = data_dir + f'/sub-{sub}/func/'
+    
+    if file_type == 'motion' or file_type == 'both':
+        conf1 = pd.read_table(func_dir + f'/sub-{sub}_task-imagine_run-01_desc-confounds_timeseries.tsv')
+        conf2 = pd.read_table(func_dir + f'/sub-{sub}_task-imagine_run-02_desc-confounds_timeseries.tsv')
+        conf3 = pd.read_table(func_dir + f'/sub-{sub}_task-imagine_run-03_desc-confounds_timeseries.tsv')
+        conf4 = pd.read_table(func_dir + f'/sub-{sub}_task-imagine_run-04_desc-confounds_timeseries.tsv')
+        
+        col_names = ['csf', 'white_matter', 'trans_x', 'trans_y', 'trans_z', 'rot_x', 'rot_y', 'rot_z', 'framewise_displacement', 'dvars']
+        print(f'confounds: {col_names}')
+        for c in range(8):
+            col_names.append(col_names[c] + '_derivative1')
+        
+        confs = [(conf1, 'conf1'), (conf2, 'conf2'), (conf3, 'conf3'), (conf4, 'conf4')]
+        
+        for conf, name in confs:
+            run = name[-1]
+            u_conf = conf[col_names]
+            u_conf = u_conf.fillna(0)
+            out = (out_dir + f'/sub-{sub}_task-imagine_run-0{run}_formatted_confounds.txt')
+            u_conf.to_csv(out, sep='\t', header=False, index=False)
+            #run += 1
+
+    if file_type == 'behave' or file_type == 'both':
+        c1 = pd.read_table(f'/corral-repl/utexas/prestonlab/whiterabbit_temp/imagine_tsvs/sub-{sub}_task-imagine_run-01_events.tsv')
+        c2 = pd.read_table(f'/corral-repl/utexas/prestonlab/whiterabbit_temp/imagine_tsvs/sub-{sub}_task-imagine_run-02_events.tsv')
+        c3 = pd.read_table(f'/corral-repl/utexas/prestonlab/whiterabbit_temp/imagine_tsvs/sub-{sub}_task-imagine_run-03_events.tsv')
+        c4 = pd.read_table(f'/corral-repl/utexas/prestonlab/whiterabbit_temp/imagine_tsvs/sub-{sub}_task-imagine_run-04_events.tsv')
+
+        arrs = [(c1, 'c1'), (c2, 'c2'), (c3, 'c3'), (c4, 'c4')]
+        for arr, name in arrs:
+            run = name[-1]
+            for item in range(1, 33, 1):
+                items = pd.DataFrame(columns = ['onset', 'duration', 'weight'])
+                ref = arr[arr['trial'] == item]
+                for index, row in ref.iterrows():
+                    items.loc[len(items)] = [float(row['onset']), float(row['duration']), float(1.0)]
+                out = out_dir + f'/sub-{sub}_task-imagine_run-{run}_item-{item}.txt'
+                items.to_csv(out, sep='\t', header=False, index=False)
+
+            
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("data_dir", help="main directory where subjects are located (e.g., derivatives/fmriprep/)")
+    parser.add_argument("file_type", help="motion, behave, or both")
+    parser.add_argument("sub", help="subject number e.g. wr001")
+    args = parser.parse_args()
+    main(args.data_dir, args.file_type, args.sub)
