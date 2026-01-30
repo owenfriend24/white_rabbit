@@ -11,7 +11,7 @@ export STUDYDIR=$STOCKYARD2/ls6/wr
 export BATCHDIR=$STOCKYARD2/ls6/wr/batch/launchscripts
 export FSDIR=$SCRATCH/wr/prepro/derivatives/fmriprep/sourcedata/freesurfer
 export FMDIR=$SCRATCH/wr/prepro/derivatives/fmriprep/
-export CORR=/corral-repl/utexas/prestonlab/prisma_testing
+export CORR=/corral-repl/utexas/prestonlab/whiterabbit_temp
 # add analysis scripts to path
 export PATH=$PATH:$SRCDIR/bin
 export STUDYDIR=$STOCKYARD2/ls6/wr
