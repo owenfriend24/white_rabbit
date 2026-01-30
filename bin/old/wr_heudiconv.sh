@@ -28,13 +28,15 @@ fi
 image=/work/03206/mortonne/software/images/heudiconv-0.11.3.sif
 module load tacc-singularity
 
+
 singularity run "$image" \
     -s "$subject" \
     -f "$heuristic" \
     -b \
     -o "$bids_dir" \
     --minmeta \
+    # for skyra, below line needs to be --files "$subj_raw_dir"/*/*.* \
     --files "$subj_raw_dir"/*.* \
     --overwrite 
 
-
+fi

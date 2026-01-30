@@ -19,7 +19,7 @@ def infotodict(seqinfo):
     """
     # anatomicals
     key_T1w = create_key("sub-{subject}/anat/sub-{subject}_T1w")
-    key_T2w = create_key("sub-{subject}/anat/sub-{subject}_run-{item:02d}_T2w")
+    key_T2w = create_key("sub-{subject}/anat/sub-{subject}_T2w_run={item}")
 
     key_fm_ap = create_key("sub-{subject}/fmap/sub-{subject}_dir-AP_run-{item}_epi")
     key_fm_pa = create_key("sub-{subject}/fmap/sub-{subject}_dir-PA_run-{item}_epi")
@@ -80,7 +80,7 @@ def infotodict(seqinfo):
             n_T1 +=1
             print(f'INSIDE::{s.series_id}::{n_T1}::{s.series_files}')
             
-        elif  s.series_description == "T2 coronal":
+        elif 'T2' in s.series_description:
             # T2 coronal anatomical
             info[key_T2w].append(s.series_id)
             n_T2 += 1
