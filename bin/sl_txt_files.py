@@ -28,6 +28,13 @@ def main(sub):
         f'{beta_dir}/sub-wr261_sl_meta.txt',
         sep='\t', header=False, index=False)
 
+    # take edge trials only
+    df_14 = df_all[((df_all['trial'] - 1) % 4 == 0) | (df_all['trial'] % 4 == 0)]
+
+    df_14.to_csv(
+        f'{beta_dir}/sub-wr261_sl_meta_1v4.txt',
+        sep='\t', header=False, index=False)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("sub", help="subject number e.g. wr001")

@@ -77,10 +77,12 @@ if __name__ == "__main__":
     elif masktype == 'hippocampus':
         masks = ['b_hip', 'l_hip', 'r_hip']
 
-    if comparison == 14:
-        comp_file = '/home1/09123/ofriend/analysis/white_rabbit/templates/1v4_sl_template.txt'
-    elif comparison == 1234:
-        comp_file = '/home1/09123/ofriend/analysis/white_rabbit/templates/12v34_sl_template.txt'
+    if comparison == '14':
+        comp_file = f'{betadir}/sub-wr261_sl_meta_1v4.txt'
+    elif comparison == 'all':
+        comp_file = f'{betadir}/sub-wr261_sl_meta.txt'
+    else:
+        raise ValueError('no valid comparison provided! oh no!')
 
     if drop_run is not None:
         # need a new file for this: run, mini_block, item. Will need to be generated sub by sub
