@@ -84,7 +84,7 @@ if __name__ == "__main__":
     else:
         raise ValueError('no valid comparison provided! oh no!')
 
-    if drop_run is not None:
+    if drop_run is None:
         # need a new file for this: run, mini_block, item. Will need to be generated sub by sub
         run, mini_block, context, item = np.loadtxt(comp_file, unpack=True)
 
