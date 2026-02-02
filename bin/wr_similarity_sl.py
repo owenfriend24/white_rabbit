@@ -144,7 +144,7 @@ if __name__ == "__main__":
 
         #save out map
         subjoutfile = f'{out_dir}/{sbj}_same_over_diff_{comparison}_{mask}_z.nii.gz' #z-score computed within searchlight
-        map2nifti(ds,same_over_diff.samples).to_filename(subjoutfile)
+        map2nifti(ds, same_over_diff.samples).to_filename(subjoutfile)
 
         subjoutfile = f'{out_dir}/{sbj}_diff_over_same_{comparison}_{mask}_z.nii.gz'  # z-score computed within searchlight
         map2nifti(ds, diff_over_same.samples).to_filename(subjoutfile)

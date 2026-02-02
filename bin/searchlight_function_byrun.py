@@ -76,4 +76,4 @@ class searchlight_function_byrun(Measure):
         same_over_diff = numpy.nanmean(same_context) - numpy.nanmean(diff_context)
 
         # contrast conditions
-        return same_over_diff
+        return numpy.array([same_over_diff], dtype=numpy.float32)
