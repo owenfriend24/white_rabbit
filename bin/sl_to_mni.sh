@@ -16,14 +16,14 @@ sl_dir=${corr}/sub-${sub}/searchlight_${comp}/
 mkdir -p ${sl_dir}/mni/
 
 for zmap in ${sl_dir}/*${roi}*; do
+  fname=$(basename "${zmap}")
   antsApplyTransforms -d 3 \
-  -i "${zmap}" \
-  -o "${sl_dir}/mni/${zmap}" \
-  -r "/home1/09123/ofriend/analysis/temple/bin/templates/MNI152_T1_func_brain.nii.gz" \
-  -t "${corr}/sub-${sub}/transforms/native_to_MNI_Warp.nii.gz" \
-  -t "${corr}/sub-${sub}/transforms/native_to_MNI_Affine.txt"
+    -i "${zmap}" \
+    -o "${sl_dir}/mni/${fname}" \
+    -r "/home1/09123/ofriend/analysis/temple/bin/templates/MNI152_T1_func_brain.nii.gz" \
+    -t "${corr}/sub-${sub}/transforms/native_to_MNI_Warp.nii.gz" \
+    -t "${corr}/sub-${sub}/transforms/native_to_MNI_Affine.txt"
 done
-#
 
 
 
