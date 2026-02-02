@@ -36,6 +36,9 @@ class searchlight_function_byrun(Measure):
         dsm = self.dsm(dataset)
         dsm = 1 - dsm.samples
 
+        print(f'shape: {dsm.shape}')
+        print(f'range: {min(dsm)} - {max(dsm)}')
+
         ### calculate the difference to determine representational change ###
         eps = 1e-7
         dsm_z = numpy.arctanh(numpy.clip(dsm, -1 + eps, 1 - eps))
@@ -57,12 +60,15 @@ class searchlight_function_byrun(Measure):
             for y in range(x + 1, n):
                 dstmp = dsm_z[x, y]
                 if dataset.sa['run'][x] == dataset.sa['run'][y]:  # only do WITHIN run comparisons
+                    print(f'comparing within run {dataset.sa["run"][x]}')
                     if dataset.sa['mini_block'][x] == dataset.sa['mini_block'][y]:  # trials WITHIN a mini block
                         if dataset.sa['item'][x] != dataset.sa['item'][y]:
                             if dataset.sa['context'][x] == dataset.sa['context'][y]:
                                 same_context.append(dstmp)
                             else:
                                 diff_context.append(dstmp)
+                else:
+                    print(f'NOT comparing run {dataset.sa["run"][x]} to {dataset.sa["run"][y]}')
 
         #### convert items to arrays ###
         same_context = array(same_context)
