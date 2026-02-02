@@ -36,4 +36,4 @@ antsApplyTransforms -d 3 \
     -t "${corr}/sub-${sub}/transforms/native_to_MNI_Warp.nii.gz" \
     -t "${corr}/sub-${sub}/transforms/native_to_MNI_Affine.txt"
 
-fslmaths ${corr}/group_masks/gm/gm_mni/sub-${sub}_gm_mni.nii.gz -abs -bin ${corr}/group_masks/gm/gm_binary/sub-${sub}_gm_mni.nii.gz
+#fslmaths ${corr}/group_masks/gm/gm_mni/sub-${sub}_gm_mni.nii.gz -abs -bin ${corr}/group_masks/gm/gm_binary/sub-${sub}_gm_mni.nii.gz
