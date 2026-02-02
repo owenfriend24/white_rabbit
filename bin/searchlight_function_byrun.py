@@ -73,7 +73,7 @@ class searchlight_function_byrun(Measure):
         same_context = array(same_context)
         diff_context = array(diff_context)
 
-        same_over_diff = numpy.mean(same_context) - numpy.mean(diff_context)
+        same_over_diff = numpy.nanmean(same_context) - numpy.nanmean(diff_context)
 
         # contrast conditions
         return same_over_diff
