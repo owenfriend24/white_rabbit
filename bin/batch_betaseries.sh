@@ -43,3 +43,5 @@ else
     echo "No run drop specified. Running merge_betas_byrun.sh..."
     /home1/09123/ofriend/analysis/white_rabbit/bin/merge_betas_byrun.sh $sub
 fi
+
+fslmerge -t ${betadir}/all_items.nii.gz ${betadir}/run1_items.nii.gz ${betadir}/run2_items.nii.gz ${betadir}/run3_items.nii.gz ${betadir}/run4_items.nii.gz
