@@ -32,7 +32,7 @@ def main(sub):
     df_14 = df_all[((df_all['trial'] - 1) % 4 == 0) | (df_all['trial'] % 4 == 0)]
 
     df_14.to_csv(
-        f'{beta_dir}/sub-wr261_sl_meta_1v4.txt',
+        f'{beta_dir}/sub-{sub}_sl_meta_1v4.txt',
         sep='\t', header=False, index=False)
 
 if __name__ == "__main__":
