@@ -55,14 +55,17 @@ class searchlight_function_byrun(Measure):
             for y in range(x + 1, n):
                 dstmp = dsm_z[x, y]
                 if dataset.sa['run'][x] == dataset.sa['run'][y]:  # only do WITHIN run comparisons
-                    print(f'comparing within run {dataset.sa["run"][x]}')
+                    #print(f'comparing within run {dataset.sa["run"][x]}')
                     if dataset.sa['mini_block'][x] == dataset.sa['mini_block'][y]:  # trials WITHIN a mini block
                         print(f'comparing within mini block: {dataset.sa["mini_block"][x]}')
                         if dataset.sa['item'][x] != dataset.sa['item'][y]:
+                            print(f'comparing two trials: {dataset.sa["item"][x]} vs {dataset.sa["item"][y]}')
                             if dataset.sa['context'][x] == dataset.sa['context'][y]:
+                                print(f'SAME context: similarity = {dstmp}')
                                 same_context.append(dstmp)
                             else:
                                 diff_context.append(dstmp)
+                                print(f'DIFFERENT context: similarity = {dstmp}')
                 # else:
                 #     print(f'NOT comparing run {dataset.sa["run"][x]} to {dataset.sa["run"][y]}')
 
