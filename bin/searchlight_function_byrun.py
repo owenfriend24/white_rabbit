@@ -36,8 +36,8 @@ class searchlight_function_byrun(Measure):
         dsm = self.dsm(dataset)
         dsm = 1 - dsm.samples
 
-        print(f'shape: {dsm.shape}')
-        print(f'range: {dsm.min()} - {dsm.max()}')
+       # print(f'shape: {dsm.shape}')
+       # print(f'range: {dsm.min()} - {dsm.max()}')
 
         ### calculate the difference to determine representational change ###
         eps = 1e-7
@@ -54,7 +54,7 @@ class searchlight_function_byrun(Measure):
 
 
         ### loop through the data to sort the within and across comparisons ###
-        n = len(dsm)
+        n = len(dsm_z)
 
         for x in range(n):
             for y in range(x + 1, n):
