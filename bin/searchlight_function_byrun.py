@@ -60,7 +60,7 @@ class searchlight_function_byrun(Measure):
                         #print(f'comparing within mini block: {dataset.sa["mini_block"][x]}')
                         if dataset.sa['item'][x] != dataset.sa['item'][y]:
                            #print(f'comparing two trials: {dataset.sa["item"][x]} vs {dataset.sa["item"][y]}')
-                            if dataset.sa['context'][x] + dataset.sa['context'][y] == 2:
+                            if dataset.sa['context'][x] + dataset.sa['context'][y] == 0:
                                 #print(f'SAME context: similarity = {dstmp}')
                                 same_context.append(dstmp)
                             else:
