@@ -70,10 +70,16 @@ class searchlight_function_byrun(Measure):
                 #     print(f'NOT comparing run {dataset.sa["run"][x]} to {dataset.sa["run"][y]}')
 
         #### convert items to arrays ###
-        same_context = array(same_context)
-        diff_context = array(diff_context)
+        same_context = numpy.array(same_context)
+        diff_context = numpy.array(diff_context)
+
+        print(f'same context: shape = {same_context.shape}, min = {same_context.min()}, max = {same_context.max()}')
+
+        print(f'diff context: shape = {diff_context.shape}, min = {diff_context.min()}, max = {diff_context.max()}')
+
 
         same_over_diff = numpy.nanmean(same_context) - numpy.nanmean(diff_context)
+        print(f'same over diff: {same_over_diff}')
 
         # contrast conditions
         return numpy.array([same_over_diff], dtype=numpy.float32)

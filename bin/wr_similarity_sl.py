@@ -139,12 +139,13 @@ if __name__ == "__main__":
 
         sl = sphere_searchlight(sl_func,radius = 3)
         same_over_diff = sl(ds)
+
+        #save out map
+        subjoutfile = f'{out_dir}/{sbj}_same_over_diff_{comparison}_{mask}_z.nii.gz'
+        map2nifti(ds, same_over_diff.samples).to_filename(subjoutfile)
+
         diff_over_same = same_over_diff.copy()
         diff_over_same.samples = -same_over_diff.samples
 
-        #save out map
-        subjoutfile = f'{out_dir}/{sbj}_same_over_diff_{comparison}_{mask}_z.nii.gz' #z-score computed within searchlight
-        map2nifti(ds, same_over_diff.samples).to_filename(subjoutfile)
-
-        subjoutfile = f'{out_dir}/{sbj}_diff_over_same_{comparison}_{mask}_z.nii.gz'  # z-score computed within searchlight
+        subjoutfile = f'{out_dir}/{sbj}_diff_over_same_{comparison}_{mask}_z.nii.gz'
         map2nifti(ds, diff_over_same.samples).to_filename(subjoutfile)
