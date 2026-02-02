@@ -57,13 +57,14 @@ class searchlight_function_byrun(Measure):
                 if dataset.sa['run'][x] == dataset.sa['run'][y]:  # only do WITHIN run comparisons
                     print(f'comparing within run {dataset.sa["run"][x]}')
                     if dataset.sa['mini_block'][x] == dataset.sa['mini_block'][y]:  # trials WITHIN a mini block
+                        print(f'comparing within mini block: {dataset.sa["mini_block"][x]}')
                         if dataset.sa['item'][x] != dataset.sa['item'][y]:
                             if dataset.sa['context'][x] == dataset.sa['context'][y]:
                                 same_context.append(dstmp)
                             else:
                                 diff_context.append(dstmp)
-                else:
-                    print(f'NOT comparing run {dataset.sa["run"][x]} to {dataset.sa["run"][y]}')
+                # else:
+                #     print(f'NOT comparing run {dataset.sa["run"][x]} to {dataset.sa["run"][y]}')
 
         #### convert items to arrays ###
         same_context = array(same_context)
