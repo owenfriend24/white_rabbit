@@ -45,3 +45,6 @@ else
 fi
 
 fslmerge -t ${betadir}/all_items.nii.gz ${betadir}/run1_items.nii.gz ${betadir}/run2_items.nii.gz ${betadir}/run3_items.nii.gz ${betadir}/run4_items.nii.gz
+
+fslselectvols -i ${betadir}/all_items.nii.gz -o ${betadir}/1v4_items.nii.gz --vols=/home1/09123/ofriend/analysis/white_rabbit/templates/vols.txt
+
