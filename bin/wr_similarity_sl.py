@@ -104,8 +104,10 @@ if __name__ == "__main__":
         elif masktype == 'hippocampus':
             slmask = f'{expdir}/sub-{sbj}/masks/hip_masks/func-{mask}.nii.gz'
 
-
-        ds = fmri_dataset(os.path.join(betadir, f'all_items.nii.gz'), mask=slmask)
+        if comparison == '14':
+            ds = fmri_dataset(os.path.join(betadir, f'1v4_items.nii.gz'), mask=slmask)
+        else:
+            ds = fmri_dataset(os.path.join(betadir, f'all_items.nii.gz'), mask=slmask)
 
         ds.sa['run'] = run[:]
         ds.sa['mini_block'] = mini_block[:]
