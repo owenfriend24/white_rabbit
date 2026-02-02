@@ -43,7 +43,6 @@ class searchlight_function_byrun(Measure):
         same_context = []
         diff_context = []
 
-
         ### loop through the data to sort the within and across comparisons ###
         n = len(dsm)
 
@@ -52,11 +51,10 @@ class searchlight_function_byrun(Measure):
                 dstmp = dsm_z[x, y]
                 if dataset.sa['run'][x] == dataset.sa['run'][y]:  # only do WITHIN run comparisons
                     if dataset.sa['mini_block'][x] == dataset.sa['mini_block'][y]:  # trials WITHIN a mini block
-                        if dataset.sa['context'][x] == dataset.sa['context'][y]:
-                            if dataset.sa['item'][x] != dataset.sa['item'][y]:  # different items
+                        if dataset.sa['item'][x] != dataset.sa['item'][y]:
+                            if dataset.sa['context'][x] == dataset.sa['context'][y]:
                                 same_context.append(dstmp)
-                        elif dataset.sa['context'][x] != dataset.sa['context'][y]:  # across triad
-                            if dataset.sa['item'][x] != dataset.sa['item'][y]:
+                            else:
                                 diff_context.append(dstmp)
 
         #### convert items to arrays ###
