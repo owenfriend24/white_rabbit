@@ -27,6 +27,10 @@ source /home1/09123/ofriend/analysis/white_rabbit/wr_profile
 /home1/09123/ofriend/analysis/white_rabbit/bin/beta_fsfs.sh $sub
 /home1/09123/ofriend/analysis/white_rabbit/bin/beta_files.sh $sub
 
+# keeping here for now for batch running
+/home1/09123/ofriend/analysis/white_rabbit/bin/create_hip_masks.sh $sub $CORR
+/home1/09123/ofriend/analysis/white_rabbit/bin/create_gm_mask.sh $sub
+
 # Setup betaseries directory
 betadir=$expdir/sub-${sub}/betaseries
 mkdir -p "$betadir"
