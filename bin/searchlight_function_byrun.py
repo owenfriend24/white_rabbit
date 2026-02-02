@@ -37,7 +37,7 @@ class searchlight_function_byrun(Measure):
         dsm = 1 - dsm.samples
 
         print(f'shape: {dsm.shape}')
-        print(f'range: {min(dsm.values)} - {max(dsm.values)}')
+        print(f'range: {dsm.min()} - {dsm.max()}')
 
         ### calculate the difference to determine representational change ###
         eps = 1e-7
