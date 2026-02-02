@@ -84,17 +84,15 @@ if __name__ == "__main__":
     else:
         raise ValueError('no valid comparison provided! oh no!')
 
-    if drop_run is None:
-        # need a new file for this: run, mini_block, item. Will need to be generated sub by sub
-        run, mini_block, context, item = np.loadtxt(comp_file, unpack=True)
+    run, mini_block, context, item = np.loadtxt(comp_file, unpack=True)
 
-    # update for missing run ppts later
-    else:
-        # Load phase, run, triad, and item data
-        phase, run, triad, item = np.loadtxt(
-            f'/home1/09123/ofriend/analysis/temple/bin/templates/pre_post_{comp_file}_items.txt',
-            unpack=True
-        )
+    # # update for missing run ppts later
+    # else:
+    #     # Load phase, run, triad, and item data
+    #     phase, run, triad, item = np.loadtxt(
+    #         f'/home1/09123/ofriend/analysis/temple/bin/templates/pre_post_{comp_file}_items.txt',
+    #         unpack=True
+    #     )
 
     for mask in masks:
         if masktype == 'gm':

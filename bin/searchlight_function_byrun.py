@@ -52,10 +52,11 @@ class searchlight_function_byrun(Measure):
                 dstmp = dsm_z[x, y]
                 if dataset.sa['run'][x] == dataset.sa['run'][y]:  # only do WITHIN run comparisons
                     if dataset.sa['mini_block'][x] == dataset.sa['mini_block'][y]:  # trials WITHIN a mini block
-                        if dataset.sa['item'][x] != dataset.sa['item'][y]:  # different items
-                            if dataset.sa['context'][x] == dataset.sa['context'][y]:
+                        if dataset.sa['context'][x] == dataset.sa['context'][y]:
+                            if dataset.sa['item'][x] != dataset.sa['item'][y]:  # different items
                                 same_context.append(dstmp)
-                            elif dataset.sa['context'][x] != dataset.sa['context'][y]:  # across triad
+                        elif dataset.sa['context'][x] != dataset.sa['context'][y]:  # across triad
+                            if dataset.sa['item'][x] != dataset.sa['item'][y]:
                                 diff_context.append(dstmp)
 
         #### convert items to arrays ###
