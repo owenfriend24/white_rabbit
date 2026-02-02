@@ -11,7 +11,7 @@ sub=$1
 
 corr=/corral-repl/utexas/prestonlab/whiterabbit_temp/
 
-mri_dir=${corr}/freesurfer/sub-${sub}/mri/
+mri_dir=${corr}/sourcedata/freesurfer/sub-${sub}/mri/
 
 
 mri_convert ${mri_dir}/aparc+aseg.mgz ${mri_dir}/aparcaseg.nii.gz
@@ -28,9 +28,6 @@ antsApplyTransforms -d 3 \
     -o ${mri_dir}/b_gray_func.nii.gz \
     -r ${mri_dir}/out/brainmask_func_dilated.nii.gz \
     -n NearestNeighbor
-
-cp ${mri_dir}/b_gray_func.nii.gz \
-    /scratch/09123/ofriend/temple/new_prepro/derivatives/fmriprep/sourcedata/freesurfer/sub-${sub}/mri/b_gray_func.nii.gz
 
 antsApplyTransforms -d 3 \
     -i ${mri_dir}/b_gray_func.nii.gz \
