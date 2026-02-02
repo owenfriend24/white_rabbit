@@ -23,6 +23,7 @@ source /home1/09123/ofriend/analysis/white_rabbit/wr_profile
 
 # Run preprocessing steps
 /home1/09123/ofriend/analysis/white_rabbit/bin/prep_imagine.py $expdir both $sub
+/home1/09123/ofriend/analysis/white_rabbit/bin/sl_txt_files.py $sub
 /home1/09123/ofriend/analysis/white_rabbit/bin/beta_fsfs.sh $sub
 /home1/09123/ofriend/analysis/white_rabbit/bin/beta_files.sh $sub
 
