@@ -17,7 +17,7 @@ mkdir -p ${corr}/sub-${sub}/masks/hip_masks/
   antsApplyTransforms -d 3 \
     -i /work/09123/ofriend/ls6/wr/mni_rois/${mask}.nii.gz \
     -o ${corr}/sub-${sub}/masks/hip_masks/func-${mask}.nii.gz \
-    -r ${corr}/freesurfer/sub-${sub}/mri/out/brainmask_func_dilated.nii.gz \
+    -r ${corr}/sourcedata/freesurfer/sub-${sub}/mri/out/brainmask_func_dilated.nii.gz \
     -t [${corr}/sub-${sub}/transforms/native_to_MNI_Affine.txt,1] \
     -t ${corr}/sub-${sub}/transforms/native_to_MNI_InverseWarp.nii.gz \
     -n NearestNeighbor
