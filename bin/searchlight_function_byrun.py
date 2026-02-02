@@ -46,12 +46,7 @@ class searchlight_function_byrun(Measure):
         ### set up the vectors to hold the sorted data ###
         same_context = []
         diff_context = []
-
-        if len(same_context) == 0 or len(diff_context) == 0:
-            return 0.0
-
         # compute contrast
-
 
         ### loop through the data to sort the within and across comparisons ###
         n = len(dsm_z)
