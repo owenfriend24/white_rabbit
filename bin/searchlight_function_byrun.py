@@ -37,11 +37,18 @@ class searchlight_function_byrun(Measure):
         dsm = 1 - dsm.samples
 
         ### calculate the difference to determine representational change ###
-        dsm_z = numpy.arctanh(dsm)
+        eps = 1e-7
+        dsm_z = numpy.arctanh(numpy.clip(dsm, -1 + eps, 1 - eps))
 
         ### set up the vectors to hold the sorted data ###
         same_context = []
         diff_context = []
+
+        if len(same_context) == 0 or len(diff_context) == 0:
+            return 0.0
+
+        # compute contrast
+
 
         ### loop through the data to sort the within and across comparisons ###
         n = len(dsm)
@@ -61,8 +68,7 @@ class searchlight_function_byrun(Measure):
         same_context = array(same_context)
         diff_context = array(diff_context)
 
-        same_over_diff = mean(same_context) - mean(diff_context)
-        diff_over_same = mean(diff_context) - mean(same_context)
+        same_over_diff = numpy.mean(same_context) - numpy.mean(diff_context)
 
         # contrast conditions
         return same_over_diff
