@@ -23,6 +23,9 @@ def create_subject_file(subject, comparison, mask):
 
     roi_dfs = []
 
+    column_order = ['subject', 'age', 'age_group', 'roi', 'compare_type',
+        'run', 'mini_block', 'trial_1', 'trial_2', 'comparison', 'pattern_similarity']
+
     for m in masks:
         ps_file = os.path.join(sub_dir, f'{subject}_PS_{comparison}_{m}_full.csv')
 
@@ -45,6 +48,8 @@ def create_subject_file(subject, comparison, mask):
             temp_df['roi'] = m
             temp_df['compare_type'] = str(comparison)
 
+            temp_df = temp_df[column_order]
+
             roi_dfs.append(temp_df)
         else:
             print(f"Warning: File not found for mask {m}")
@@ -56,7 +61,7 @@ def create_subject_file(subject, comparison, mask):
     return comp_data
 
 def main(subject, comparison, mask):
-    out_file =  f'/corral-repl/utexas/prestonlab/whiterabbit_temp/sub-{subject}/PS_{mask}_{comparison}_master.csv'
+    out_file =  f'/corral-repl/utexas/prestonlab/whiterabbit_temp/sub-{subject}/PS_{mask}_{comparison}/PS_{mask}_{comparison}_master.csv'
     df = create_subject_file(subject, comparison, mask)
     df.to_csv(out_file)
 
