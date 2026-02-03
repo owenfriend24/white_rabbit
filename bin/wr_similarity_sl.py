@@ -78,9 +78,9 @@ if __name__ == "__main__":
         masks = ['b_hip', 'l_hip', 'r_hip']
 
     if comparison == '14':
-        comp_file = f'{betadir}/sub-wr261_sl_meta_1v4.txt'
+        comp_file = f'{betadir}/sub-{sbj}_sl_meta_1v4.txt'
     elif comparison == 'all':
-        comp_file = f'{betadir}/sub-wr261_sl_meta.txt'
+        comp_file = f'{betadir}/sub-{sbj}_sl_meta.txt'
     else:
         raise ValueError('no valid comparison provided! oh no!')
 
@@ -111,8 +111,6 @@ if __name__ == "__main__":
         ds.sa['mini_block'] = mini_block[:]
         ds.sa['context'] = context[:]
         ds.sa['item'] = item[:]
-
-        sl_func = searchlight_function_byrun('correlation', 1, niter)
 
 # # choose the function based on the comparison as some sl logic changes by comparison
 #         if comparison == 'AC':
