@@ -134,7 +134,7 @@ if __name__ == "__main__":
 #             else:
 #                 sl_func = searchlight_function_prepost('correlation', 1, niter)
         #run the searchlight
-
+        sl_func = searchlight_function_byrun('correlation', 1, niter)
         sl = sphere_searchlight(sl_func,radius = 3)
         same_over_diff = sl(ds)
 
