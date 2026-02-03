@@ -2,6 +2,8 @@
 #
 #
 
+# for future analysis, make sure to add source memory correct vs. incorrect here too
+
 
 import pandas as pd
 import argparse
@@ -25,7 +27,7 @@ def main(sub):
     df_all = pd.concat(all_runs, ignore_index=True)
 
     df_all.to_csv(
-        f'{beta_dir}/sub-wr261_sl_meta.txt',
+        f'{beta_dir}/sub-{sub}_sl_meta.txt',
         sep='\t', header=False, index=False)
 
     # take edge trials only
