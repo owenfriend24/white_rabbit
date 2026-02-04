@@ -39,7 +39,7 @@ for subject in "${subjects[@]}"; do
         -e "s/run-1/run-${run}/g" \
         -e "s/119726208/${total_voxels}/g" \
 	      -e "s/run-01/run-0${run}/g" \
-        -e "s/222/${num_trs}/g" \
+        -e "s/2222/${num_trs}/g" \
         "$template_file" > "$output_file"
 
   done
