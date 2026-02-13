@@ -3,7 +3,7 @@
 # transform searchlight outputs to template space for across participant comparisons
 
 if [[ $# -lt 1 ]]; then
-    echo "Usage:  sl_to_mni.sh sub fmriprep_dir comp roi (e.g., sl_to_mni.sh temple024 FM AB b_gray_func)"
+    echo "Usage:  sl_to_mni.sh sub corr comp roi (e.g., sl_to_mni.sh wr200 CORR 14 b_hip)"
     exit 1
 fi
 

@@ -77,12 +77,20 @@ if __name__ == "__main__":
     elif masktype == 'hippocampus':
         masks = ['b_hip', 'l_hip', 'r_hip']
 
-    if comparison == '14':
-        comp_file = f'{betadir}/sub-{sbj}_sl_meta_1v4.txt'
-    elif comparison == 'all':
-        comp_file = f'{betadir}/sub-{sbj}_sl_meta.txt'
+    if drop_run == 4:
+        if comparison == '14':
+            comp_file = f'{betadir}/sub-{sbj}_sl_meta_1v4_drop_r4.txt'
+        elif comparison == 'all':
+            comp_file = f'{betadir}/sub-{sbj}_sl_meta_drop_r4.txt'
+        else:
+            raise ValueError('no valid comparison provided! oh no!')
     else:
-        raise ValueError('no valid comparison provided! oh no!')
+        if comparison == '14':
+            comp_file = f'{betadir}/sub-{sbj}_sl_meta_1v4.txt'
+        elif comparison == 'all':
+            comp_file = f'{betadir}/sub-{sbj}_sl_meta.txt'
+        else:
+            raise ValueError('no valid comparison provided! oh no!')
 
     run, mini_block, context, item = np.loadtxt(comp_file, unpack=True)
 

@@ -5,7 +5,6 @@
 expdir='/corral-repl/utexas/prestonlab/whiterabbit_temp/'
 sub=$1
 
-
 betadir=${expdir}/sub-${sub}/betaseries
 
 #match
