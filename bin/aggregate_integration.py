@@ -33,7 +33,7 @@ def aggregate_csv_files(comparison, csv_files, master_dir, mask):
         print("No CSV files were found for aggregation.")
 
 def is_processed (sub, comparison, master_dir, mask):
-    ps_file = Path(f"{master_dir}/sub-{sub}/PS_{mask}_{comparison}/sub-{sub}_{comparison}_{mask}_master.csv")
+    ps_file = Path(f"{master_dir}/sub-{sub}/PS_{mask}_{comparison}/PS_{mask}_{comparison}_master.csv")
     print(f'checking for {ps_file}')
     return ps_file.exists()
 
@@ -67,7 +67,7 @@ def main(master_dir, comparison, mask, agg_file):
             run(f"roi_similarity_values.py {sub} {comparison} {mask}")
             run(f"merge_ps_files.py {sub} {comparison} {mask}")
         ps_csv_files.append(
-            f"{master_dir}/sub-{sub}/PS_{mask}_{comparison}/sub-{sub}_{comparison}_{mask}_master.csv")
+            f"{master_dir}/sub-{sub}/PS_{mask}_{comparison}/PS_{mask}_{comparison}_master.csv")
 
     if agg_file:
         aggregate_csv_files(comparison, ps_csv_files, master_dir, mask)
