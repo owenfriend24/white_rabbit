@@ -34,7 +34,7 @@ def aggregate_csv_files(comparison, csv_files, master_dir, mask):
 
 def is_processed (sub, comparison, master_dir, mask):
     ps_file = Path(f"{master_dir}/sub-{sub}/PS_{mask}_{comparison}/sub-{sub}_{comparison}_{mask}_master.csv")
-
+    print(f'checking for {ps_file}')
     return ps_file.exists()
 
 def main(master_dir, comparison, mask, agg_file):
@@ -60,13 +60,12 @@ def main(master_dir, comparison, mask, agg_file):
 
         sub_processed = is_processed(sub, comparison, master_dir, mask)
 
-        if not sub_processed:
+        if sub_processed:
+            print(f"Already processed prepost for {sub}.")
+        else:
             print(f"Processing prepost values for {sub}...")
             run(f"roi_similarity_values.py {sub} {comparison} {mask}")
             run(f"merge_ps_files.py {sub} {comparison} {mask}")
-        else:
-            print(f"Already processed prepost for {sub}.")
-
         ps_csv_files.append(
             f"{master_dir}/sub-{sub}/PS_{mask}_{comparison}/sub-{sub}_{comparison}_{mask}_master.csv")
 
