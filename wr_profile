@@ -24,7 +24,7 @@ echo -e "\033]11;#3e008f\007"
 
 
 export SUB_IDS=wr_200:wr_201:wr_202:wr_203:wr_204:wr_205:wr_206:wr_207:wr_208:wr_209:wr_211:wr_212:wr_214:wr_216:wr_217:wr_219:wr_220:wr_221:wr_222:wr_223:wr_224:wr_225:wr_227:wr_228:wr_229:wr_230:wr_232:wr_234:wr_235:wr_237:wr_238:wr_239:wr_240:wr_241:wr_242:wr_243:wr_245:wr_246:wr_248:wr_250:wr_251:wr_254:wr_255:wr_256:wr_257:wr_261
-export SUBS=wr200:wr201:wr202:wr203:wr204:wr205:wr206:wr207:wr208:wr209:wr211:wr212:wr214:wr216:wr217:wr219:wr220:wr221:wr222:wr223:wr224:wr225:wr227:wr228:wr229:wr230:wr232:wr234:wr235:wr237:wr238:wr239:wr240:wr241:wr242:wr243:wr245:wr246:wr248:wr250:wr251:wr254:wr255:wr256:wr257:wr261
+export SUBS=wr200:wr201:wr202:wr203:wr204:wr205:wr206:wr207:wr208:wr209:wr211:wr212:wr214:wr216:wr217:wr219:wr220:wr221:wr222:wr223:wr224:wr225:wr227:wr228:wr229:wr230:wr232:wr234:wr235:wr237:wr238:wr239:wr240:wr241:wr242:wr243:wr245:wr246:wr248:wr250:wr251:wr254:wr255:wr256:wr257:wr259:wr261
 # to easily call all subs in a for loop
 IFS=':' read -ra WR_SUBS <<< "$SUBS"
 export SUB_LIST="${WR_SUBS[@]}"
