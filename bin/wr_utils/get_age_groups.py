@@ -16,6 +16,9 @@ def get_subject_group(subject):
     else:
         return 'adult'
 
+def get_all_subjects():
+    ref = pd.read_csv('/home1/09123/ofriend/analysis/white_rabbit/templates/randomise_measures.csv')
+    return ref.subject.values
 
 
 
